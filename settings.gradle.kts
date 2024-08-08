@@ -1,3 +1,16 @@
+/*
+ * Developed by Ji Sungbin 2024.
+ *
+ * Licensed under the MIT.
+ * Please see full license: https://github.com/jisungbin/bubble-design-system/blob/trunk/LICENSE
+ */
+@file:Suppress("UnstableApiUsage")
+
+rootProject.name = "bubble-design-system"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 pluginManagement {
   repositories {
     google {
@@ -11,13 +24,19 @@ pluginManagement {
     gradlePluginPortal()
   }
 }
+
 dependencyResolutionManagement {
   repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
   repositories {
-    google()
+    google {
+      content {
+        includeGroupByRegex("com\\.android.*")
+        includeGroupByRegex("com\\.google.*")
+        includeGroupByRegex("androidx.*")
+      }
+    }
     mavenCentral()
   }
 }
 
-rootProject.name = "bubble-design-system"
 include(":app")
